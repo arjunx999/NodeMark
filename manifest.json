@@ -1,0 +1,32 @@
+{
+  "name": "NodeMark",
+  "description": "Highlight what matters, export what you need, never lose developer notes again.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "hello.html"
+  },
+  "icons": {
+    "48": "./logo.png",
+    "128": "./logo.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "permissions": ["contextMenus", "scripting", "activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "highlight_selection": {
+      "suggested_key": {
+        "default": "Alt+Q"
+      },
+      "description": "Highlight selected text"
+    }
+  }
+}
