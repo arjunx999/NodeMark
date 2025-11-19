@@ -1,6 +1,12 @@
-chrome.runtime.onMessage.addListener((msg) => {
+let highlightedTexts = [];
+
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.action === "highlight_now") {
     highlightText();
+  }
+
+  if (msg.action === "GET_HIGHLIGHTS") {
+    sendResponse({ highlights: highlightedTexts });
   }
 });
 
@@ -14,6 +20,8 @@ function highlightText() {
   // prevent useless clicks on whitespaces
   let selectedText = selection.toString().trim();
   if (!selectedText) return;
+
+  highlightedTexts.push(selectedText);
 
   // create highlighted span
   const span = document.createElement("span");

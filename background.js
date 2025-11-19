@@ -1,7 +1,7 @@
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: "nodemark-highlight",
-    title: "Highlight Using NodeMark",
+    title: "Highlight Using NodeMark (Alt+Q)",
     contexts: ["selection"],
   });
 });
